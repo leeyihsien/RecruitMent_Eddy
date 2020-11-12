@@ -1,0 +1,61 @@
+
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="basicFormGroup">
+    <form [formGroup]="basicFormGroup">
+      <ng-template matStepLabel>個人基本資料</ng-template>
+      <mat-form-field>
+        <mat-label>中文姓名</mat-label>
+        <input matInput placeholder="姓名" formControlName="localName" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>應微職務</mat-label>
+        <input matInput placeholder="應微職務" formControlName="position" required>
+      </mat-form-field>
+
+      <div>
+      <mat-form-field>
+        <mat-label>英文姓名</mat-label>
+        <input matInput placeholder="英文名字" formControlName="englishName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>身份證字號</mat-label>
+        <input matInput placeholder="身份證字號" >
+      </mat-form-field>
+      </div>
+      <div>
+        <h3>婚姻</h3>
+        <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">未婚</mat-radio-button>
+        <mat-radio-button value="2">有偶</mat-radio-button>
+        <mat-radio-button value="3">離婚</mat-radio-button>
+        <mat-radio-button value="4">喪偶</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    </form>
+  </mat-step>
+  <!-- #docregion optional -->
+  <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
+  <!-- #enddocregion optional -->
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,57 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()" color="warn">menu</mat-icon>
+    </button>
+    <h1>翔鑫堡工業股份有限公司</h1>
+
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="['/','users']"> Users </a>
+      <a mat-button [routerLink]="'/create-account'"> Create Account </a>
+      <a mat-button [routerLink]="'/contacts'"> Contacts </a>
+      <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
+      <a mat-button [routerLink]="'/activities'"> Activities </a>
+      <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
+    </div>
+    <span class="toolbar-seprator"></span>
+    <button mat-icon-button>
+      <mat-icon>message</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>people</mat-icon>
+    </button>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+      <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav >
+
+    <mat-nav-list>
+      <h3 matSubheader>人員基本資料</h3>
+      <mat-list-item [routerLink]="'/users'">
+        <P matLine> Users </P>
+        <P matLine>基本資料</P>
+      </mat-list-item>
+      <a mat-list-item [routerLink]="'/trinav'"> Create Account </a>
+      <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
+      <a mat-list-item [routerLink]="'/create-contact'"> Create Contact </a>
+      <mat-divider></mat-divider>
+      <h3 matSubheader>維護人員</h3>
+      <a mat-list-item [routerLink]="'/activities'"> Activities </a>
+      <a mat-list-item [routerLink]="'/create-activity'"> Create Activity </a>
+      <a mat-list-item (click)="sidenav.toggle()" mat-list-item>Close</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
