@@ -5,8 +5,23 @@
   border: 1px solid #555;
 }
 .mat-form-field + .mat-form-field {
-  margin-left: 8px;
+  margin-left: 20px;
 }
 .mat-radio-button ~ .mat-radio-button {
   margin-left: 16px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 60%;
+}
+
+.example-small-width {
+  margin-left: 20px;
+  width: 5%;
 }

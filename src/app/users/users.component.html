@@ -3,27 +3,58 @@
   <mat-step [stepControl]="basicFormGroup">
     <form [formGroup]="basicFormGroup">
       <ng-template matStepLabel>個人基本資料</ng-template>
+      <h2>個人基本資料表</h2>
       <mat-form-field>
         <mat-label>中文姓名</mat-label>
         <input matInput placeholder="姓名" formControlName="localName" required>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>應微職務</mat-label>
-        <input matInput placeholder="應微職務" formControlName="position" required>
-      </mat-form-field>
-
-      <div>
-      <mat-form-field>
         <mat-label>英文姓名</mat-label>
         <input matInput placeholder="英文名字" formControlName="englishName">
       </mat-form-field>
+        <mat-form-field>
+          <mat-label>應微職務</mat-label>
+          <input matInput placeholder="應微職務" formControlName="position" required>
+        </mat-form-field>
+        <div>
       <mat-form-field>
         <mat-label>身份證字號</mat-label>
-        <input matInput placeholder="身份證字號" >
+        <input matInput placeholder="身份證字號" formControlName="idNumber" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" formControlName="birthday" matInput placeholder="出生年月日" [matDatepicker]="birthdayPicker" />
+        <mat-datepicker-toggle [for]="birthdayPicker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #birthdayPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>國籍</mat-label>
+        <input matInput placeholder="國籍" formControlName="nationality" required>
       </mat-form-field>
       </div>
       <div>
-        <h3>婚姻</h3>
+        <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">男</mat-radio-button>
+        <mat-radio-button value="2">女</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field class="example-small-width">
+          <mat-label>身高</mat-label>
+          <input matInput placeholder="身高" formControlName="nationality" required>
+        </mat-form-field>
+        <mat-label>CM</mat-label>
+        <mat-form-field class="example-small-width">
+          <mat-label>體重</mat-label>
+          <input matInput placeholder="體重" formControlName="nationality" required>
+        </mat-form-field>
+        <mat-label>KG</mat-label>
+        <mat-form-field class="example-small-width">
+          <mat-label>血型</mat-label>
+          <input matInput placeholder="血型" formControlName="nationality" required>
+        </mat-form-field>
+
+      </div>
+      <br>
+      <div>
+        <h3>婚姻狀況</h3>
         <mat-radio-group aria-label="Select an option">
         <mat-radio-button value="1">未婚</mat-radio-button>
         <mat-radio-button value="2">有偶</mat-radio-button>
@@ -31,6 +62,54 @@
         <mat-radio-button value="4">喪偶</mat-radio-button>
         </mat-radio-group>
       </div>
+      <br>
+      <div>
+        <h3>兵役狀況</h3>
+        <mat-radio-group aria-label="Select an option">
+        <mat-radio-button [value]="1" >志願役</mat-radio-button>
+        <mat-radio-button [value]="2" >義務役</mat-radio-button>
+        <mat-radio-button [value]="3" >替代役</mat-radio-button>
+        <mat-radio-button [value]="4" >免役</mat-radio-button>
+        </mat-radio-group>
+        <pre></pre>
+      <mat-form-field appearance="fill">
+      <mat-select  placeholder="請選擇兵種">
+        <mat-option value="option1">陸軍</mat-option>
+        <mat-option value="option2">海軍</mat-option>
+        <mat-option value="option3">空軍</mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <br>
+      <h3>現居地址</h3>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button [value]="1" >自宅</mat-radio-button>
+        <mat-radio-button [value]="2" >租屋</mat-radio-button>
+      </mat-radio-group>
+      <pre></pre>
+      <mat-form-field  class="example-full-width">
+        <mat-label>現居地址</mat-label>
+        <input matInput placeholder="現居地址" formControlName="address" required>
+      </mat-form-field>
+      <pre></pre>
+      <h3>聯絡方式</h3>
+      <mat-form-field >
+        <mat-label>手機</mat-label>
+        <input matInput placeholder="手機" formControlName="mobile" required>
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label>市話</mat-label>
+        <input matInput placeholder="市話 (請加上區碼)" formControlName="phone" required>
+      </mat-form-field>
+      <pre></pre>
+      <mat-form-field class = "example-full-width">
+        <mat-label>電子信箱</mat-label>
+        <input matInput placeholder="電子信箱" formControlName="email" required>
+      </mat-form-field>
+
+
+
+
 
     </form>
   </mat-step>
