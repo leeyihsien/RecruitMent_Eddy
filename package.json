@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/file-input": "^4.0.1",
     "@angular/animations": "^10.2.1",
     "@angular/cdk": "^10.2.6",
     "@angular/common": "~10.1.4",
@@ -23,7 +24,10 @@
     "@angular/platform-browser": "~10.1.4",
     "@angular/platform-browser-dynamic": "~10.1.4",
     "@angular/router": "~10.1.4",
+    "angular-material-fileupload": "^3.0.1",
+    "bootstrap": "^4.5.3",
     "moment": "^2.29.1",
+    "ng-image-input-with-preview": "^1.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

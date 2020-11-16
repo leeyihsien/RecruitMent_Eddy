@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
@@ -22,6 +22,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import {  MatDatepickerModule } from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,13 @@ import {MatSelectModule} from '@angular/material/select';
     MatRadioModule,
     MatMomentDateModule,
     MatDatepickerModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMatFileInputModule,
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
