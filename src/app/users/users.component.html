@@ -1,4 +1,5 @@
 <mat-horizontal-stepper linear #stepper>
+  <!-- 填寫基本資料頁面 -->
   <mat-step [stepControl]="basicFormGroup">
     <form [formGroup]="basicFormGroup">
       <ng-template matStepLabel>個人基本資料</ng-template>
@@ -64,7 +65,7 @@
         <h2>婚姻狀況</h2>
         <mat-radio-group aria-label="Select an option">
         <mat-radio-button value="1">未婚</mat-radio-button>
-        <mat-radio-button value="2">有偶</mat-radio-button>
+        <mat-radio-button value="2">已婚</mat-radio-button>
         <mat-radio-button value="3">離婚</mat-radio-button>
         <mat-radio-button value="4">喪偶</mat-radio-button>
         </mat-radio-group>
@@ -85,6 +86,15 @@
         <mat-option value="option2">海軍</mat-option>
         <mat-option value="option3">空軍</mat-option>
         </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>起訖日期</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
       </div>
       <br>
@@ -113,32 +123,167 @@
         <mat-label>電子信箱</mat-label>
         <input matInput placeholder="電子信箱" formControlName="email" required>
       </mat-form-field>
+      <pre></pre>
+
+      <h2>學歷與工作經歷</h2>
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              學歷資料
+            </mat-panel-title>
+            <mat-panel-description>
+              請輸入學歷
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <form #schoolForm="ngForm" class="container mt-3" (ngSubmit)="logSchoolValue()">
+          <section *ngFor="let school of schoolList; let i = index;">
+          <mat-form-field>
+            <mat-label>學校名稱</mat-label>
+            <input matInput type='text' [(ngModel)]="school.schoolName"
+            name = "schoolName_{{school.id}}">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>學制</mat-label>
+            <mat-select matNativeControl  [(ngModel)]="school.schoolSystem" name="schoolSystem_{{school.id}}" required>
+              <mat-option value="doctor">博士班</mat-option>
+              <mat-option value="graduateSchool">研究所</mat-option>
+              <mat-option value="university">大專院校</mat-option>
+              <mat-option value="juniorCollege">五專</mat-option>
+              <mat-option value="highSchool">高中職</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>科系</mat-label>
+            <input matInput type='text' [(ngModel)]="school.major"
+            name = "major_{{school.id}}">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>起訖日期</mat-label>
+            <mat-date-range-input [rangePicker]="schoolpicker" type='text' [(ngModel)]="school.duringDate"
+            name = "duringDate_{{school.id}}">
+              <input matStartDate placeholder="Start date">
+              <input matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="schoolpicker"></mat-datepicker-toggle>
+      <mat-date-range-picker #schoolpicker></mat-date-range-picker>
+          </mat-form-field>
+          <mat-label>&nbsp;&nbsp;&nbsp;</mat-label>
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="school.status"
+          name = "status_{{school.id}}">
+            <mat-radio-button value="graduated">畢業</mat-radio-button>
+            <mat-radio-button value="undergraduate">肄業</mat-radio-button>
+            <mat-radio-button value="still">在學中</mat-radio-button>
+            </mat-radio-group>
+            <mat-label>&nbsp;&nbsp;&nbsp;</mat-label>
+            <button mat-icon-button color = "accent" type="button" (click)="removeSchool()">
+              <span class="material-icons">
+                cancel
+                </span>
+            </button>
+          </section>
+          </form>
+            <!-- Add button -->
+             <button mat-raised-button color = "primary" type="button" (click)="addSchool()">Add School</button>
+            <!-- ngFor code -->
+          </mat-expansion-panel>
+        </mat-accordion>
 
 
+        <pre></pre>
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                工作經歷資料
+              </mat-panel-title>
+              <mat-panel-description>
+                請輸入工作經歷
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <form #workForm="ngForm" class="container mt-3" (ngSubmit)="logWorkValue()">
+            <section *ngFor="let work of workList; let i = index;">
+            <mat-form-field>
+              <mat-label>公司名稱</mat-label>
+              <input matInput  type='text' [(ngModel)]="work.companyName"
+              name = "companyName_{{work.id}}">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>職務/職稱</mat-label>
+              <input matInput type='text' [(ngModel)]="work.position"
+              name = "position_{{work.id}}">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>起訖日期</mat-label>
+              <mat-date-range-input [rangePicker]="workpicker" type='text' [(ngModel)]="work.duringDate"
+                name = "duringDate_{{work.id}}">
+                <input matStartDate placeholder="Start date">
+                <input matEndDate placeholder="End date">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="workpicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #workpicker></mat-date-range-picker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>薪資</mat-label>
+              <input matInput type='text' [(ngModel)]="work.salary"
+              name = "salary_{{work.id}}">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>離職原因</mat-label>
+              <input matInput type='text' [(ngModel)]="work.reason"
+              name = "reason_{{work.id}}">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>面談紀錄</mat-label>
+              <input matInput type='text' [(ngModel)]="work.result"
+              name = "result_{{work.id}}">
+            </mat-form-field>
+            <button mat-icon-button color = "accent" type="button" (click)="removeWork()">
+              <span class="material-icons">
+                cancel
+                </span>
+            </button>
+            </section>
+            </form>
+             <!-- Add button -->
+             <button mat-raised-button color = "primary" type="button" (click)="addWork()">Add Work</button>
+            <!-- ngFor code -->
+            </mat-expansion-panel>
+          </mat-accordion>
+      <pre></pre>
+    <div align="center"><button mat-raised-button matStepperNext class="example-small-width" color="primary">Next</button></div>
     </form>
   </mat-step>
-  <!-- #docregion optional -->
+<!-- 填寫基本資料頁面 -->
+
+
+  <!-- 填寫專業技能頁面-->
   <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
   <!-- #enddocregion optional -->
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
+      <ng-template matStepLabel>專業技能</ng-template>
       <mat-form-field>
-        <mat-label>Address</mat-label>
+        <mat-label>專業技能</mat-label>
         <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
                required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button matStepperPrevious color="primary">Back</button>
+        <button mat-raised-button matStepperNext color="primary">Next</button>
       </div>
     </form>
   </mat-step>
+  <!-- 填寫專業技能頁面-->
+
+
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-raised-button matStepperPrevious color="primary">Back</button>
+      <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

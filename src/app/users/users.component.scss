@@ -11,6 +11,10 @@
   margin-left: 16px;
 }
 
+.mat-raised-button ~ .mat-raised-button {
+  margin-left: 16px;
+}
+
 .example-form {
   min-width: 150px;
   max-width: 300px;

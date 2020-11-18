@@ -51,6 +51,7 @@
       "timeEnd",
       "trace"
     ],
+    "no-duplicate-super": true,
     "no-empty": false,
     "no-inferrable-types": [
       true,

@@ -25,6 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import {MatDividerModule} from '@angular/material/divider';
     ReactiveFormsModule,
     NgxMatFileInputModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
