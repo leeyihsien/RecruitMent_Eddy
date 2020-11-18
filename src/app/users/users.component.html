@@ -6,20 +6,23 @@
       <h2>個人基本資料表</h2>
       <mat-form-field>
         <mat-label>中文姓名</mat-label>
-        <input matInput placeholder="姓名" formControlName="localName" required>
+        <input matInput placeholder="姓名" formControlName="localName" >
       </mat-form-field>
       <mat-form-field>
         <mat-label>英文姓名</mat-label>
         <input matInput placeholder="英文名字" formControlName="englishName">
       </mat-form-field>
-        <mat-form-field>
-          <mat-label>應微職務</mat-label>
-          <input matInput placeholder="應微職務" formControlName="position" required>
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>應徵職務</mat-label>
+        <mat-select matNativeControl >
+          <mat-option *ngFor="let position of positionList" [value]="position.value">
+            {{position.viewValue}}</mat-option>
+        </mat-select>
+      </mat-form-field>
           <br>
       <mat-form-field>
         <mat-label>身份證字號</mat-label>
-        <input matInput placeholder="身份證字號" formControlName="idNumber" required>
+        <input matInput placeholder="身份證字號" formControlName="idNumber" >
       </mat-form-field>
       <mat-form-field>
         <input type="text" formControlName="birthday" matInput placeholder="出生年月日" [matDatepicker]="birthdayPicker" />
@@ -28,7 +31,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>國籍</mat-label>
-        <input matInput placeholder="國籍" formControlName="nationality" required>
+        <input matInput placeholder="國籍" formControlName="nationality">
       </mat-form-field>
       <div>
         <mat-radio-group aria-label="Select an option">
@@ -37,17 +40,17 @@
         </mat-radio-group>
         <mat-form-field class="example-small-width">
           <mat-label>身高</mat-label>
-          <input matInput placeholder="身高" formControlName="nationality" required>
+          <input matInput placeholder="身高" formControlName="nationality" >
         </mat-form-field>
         <mat-label>CM</mat-label>
         <mat-form-field class="example-small-width">
           <mat-label>體重</mat-label>
-          <input matInput placeholder="體重" formControlName="nationality" required>
+          <input matInput placeholder="體重" formControlName="nationality" >
         </mat-form-field>
         <mat-label>KG</mat-label>
         <mat-form-field class="example-small-width">
           <mat-label>血型</mat-label>
-          <input matInput placeholder="血型" formControlName="nationality" required>
+          <input matInput placeholder="血型" formControlName="nationality" >
         </mat-form-field>
       </div> <br>
       <mat-card class="post-tile">
@@ -106,22 +109,22 @@
       <pre></pre>
       <mat-form-field  class="example-full-width">
         <mat-label>現居地址</mat-label>
-        <input matInput placeholder="現居地址" formControlName="address" required>
+        <input matInput placeholder="現居地址" formControlName="address" >
       </mat-form-field>
       <pre></pre>
       <h2>聯絡方式</h2>
       <mat-form-field >
         <mat-label>手機</mat-label>
-        <input matInput placeholder="手機" formControlName="mobile" required>
+        <input matInput placeholder="手機" formControlName="mobile" >
       </mat-form-field>
       <mat-form-field >
         <mat-label>市話</mat-label>
-        <input matInput placeholder="市話 (請加上區碼)" formControlName="phone" required>
+        <input matInput placeholder="市話 (請加上區碼)" formControlName="phone" >
       </mat-form-field>
       <pre></pre>
       <mat-form-field class = "example-full-width">
         <mat-label>電子信箱</mat-label>
-        <input matInput placeholder="電子信箱" formControlName="email" required>
+        <input matInput placeholder="電子信箱" formControlName="email" >
       </mat-form-field>
       <pre></pre>
 
@@ -145,7 +148,7 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>學制</mat-label>
-            <mat-select matNativeControl  [(ngModel)]="school.schoolSystem" name="schoolSystem_{{school.id}}" required>
+            <mat-select matNativeControl  [(ngModel)]="school.schoolSystem" name="schoolSystem_{{school.id}}" >
               <mat-option value="doctor">博士班</mat-option>
               <mat-option value="graduateSchool">研究所</mat-option>
               <mat-option value="university">大專院校</mat-option>
@@ -264,11 +267,319 @@
   <!-- #enddocregion optional -->
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>專業技能</ng-template>
+
+      <h2>語言能力</h2>
+      <mat-list>
+        <mat-list-item>英文</mat-list-item>
       <mat-form-field>
-        <mat-label>專業技能</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
+        <mat-label>聽</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>說</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>讀</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>寫</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+     <mat-form-field>
+      <ngx-mat-file-input [formControl]="fileControl" [multiple]="multiple" [accept]="accept" placeholder="上傳證照檔案" >
+      </ngx-mat-file-input>
+     </mat-form-field>
+     <mat-divider></mat-divider>
+
+
+      <mat-list-item>日文</mat-list-item>
+      <mat-form-field>
+        <mat-label>聽</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>說</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>讀</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>寫</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <ngx-mat-file-input [formControl]="fileControl" [multiple]="multiple" [accept]="accept" placeholder="上傳證照檔案" >
+        </ngx-mat-file-input>
+       </mat-form-field>
+       <mat-divider></mat-divider>
+
+
+      <mat-list-item>越南文</mat-list-item>
+      <mat-form-field>
+        <mat-label>聽</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>說</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>讀</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>寫</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <ngx-mat-file-input [formControl]="fileControl" [multiple]="multiple" [accept]="accept" placeholder="上傳證照檔案" >
+        </ngx-mat-file-input>
+       </mat-form-field>
+       <mat-divider></mat-divider>
+
+
+      <mat-list-item>緬甸文</mat-list-item>
+      <mat-form-field>
+        <mat-label>聽</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>說</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>讀</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>寫</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <ngx-mat-file-input [formControl]="fileControl" [multiple]="multiple" [accept]="accept" placeholder="上傳證照檔案" >
+        </ngx-mat-file-input>
+       </mat-form-field>
+       <mat-divider></mat-divider>
+
+
+      <mat-list-item>印尼文</mat-list-item>
+      <mat-form-field>
+        <mat-label>聽</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>說</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>讀</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>寫</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <ngx-mat-file-input [formControl]="fileControl" [multiple]="multiple" [accept]="accept" placeholder="上傳證照檔案" >
+        </ngx-mat-file-input>
+       </mat-form-field>
+       <mat-divider></mat-divider>
+
+      <mat-list-item>其他</mat-list-item>
+      <mat-form-field>
+        <mat-label>語言</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>聽</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>說</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>讀</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>寫</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="execellent">流利</mat-option>
+          <mat-option value="good">不錯</mat-option>
+          <mat-option value="normal">普通</mat-option>
+          <mat-option value="not good">不太好</mat-option>
+          <mat-option value="bad">完全不會</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <ngx-mat-file-input [formControl]="fileControl" [multiple]="multiple" [accept]="accept" placeholder="上傳證照檔案" >
+        </ngx-mat-file-input>
+       </mat-form-field>
+       <mat-divider></mat-divider>
+  </mat-list>
+  <pre></pre>
+  <h2>專業技能</h2>
+  <mat-list>
+    <mat-list-item>電腦技能</mat-list-item>
+    <mat-checkbox class="example-small-width">Word</mat-checkbox>
+    <mat-checkbox class="example-small-width">Excel</mat-checkbox>
+    <mat-checkbox class="example-small-width">PowerPoint</mat-checkbox>
+
+    <section class="example-section">
+    <mat-checkbox class="example-small-width" [(ngModel)]="chTyping">中文打字</mat-checkbox>
+    <mat-form-field class="example-small-width" *ngIf= "chTyping == true">
+      <mat-label>字數</mat-label>
+        <input matInput type="number" [(ngModel)]="chTypingValue">
+      </mat-form-field>
+    </section>
+  </mat-list>
+
+
+
+  <pre></pre>
       <div>
         <button mat-raised-button matStepperPrevious color="primary">Back</button>
         <button mat-raised-button matStepperNext color="primary">Next</button>

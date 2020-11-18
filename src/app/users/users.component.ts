@@ -14,6 +14,12 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import {default as _rollupMoment, Moment} from 'moment';
 
+interface position {
+  value: string;
+  viewValue: string;
+}
+
+
 const moment = _rollupMoment || _moment;
 
 export const MY_FORMATS = {
@@ -64,6 +70,8 @@ export class UsersComponent implements OnInit {
     militaryStartDay = new FormControl(moment());
     militaryEndDay = new FormControl(moment());
     startSchoolDay = new FormControl(moment());
+    chTyping = false;
+    chTypingValue = 1;
 
     public schoolList: any[] = [{
       id :1,
@@ -85,6 +93,12 @@ export class UsersComponent implements OnInit {
       result:''
     }];
 
+    positionList: position[] = [
+      {value: 'IT-position1', viewValue: '系統開發組'},
+      {value: 'IT-position2', viewValue: '網路工程組'},
+      {value: 'IT-position3', viewValue: '需求規劃組'}
+    ];
+
 
   constructor(private _formBuilder: FormBuilder) {
     this.uploadForm = this._formBuilder.group({
@@ -99,14 +113,14 @@ export class UsersComponent implements OnInit {
     }
 
     createForm() {
-      this.basicFormGroup = this._formBuilder.group({
-        localName: ['', Validators.required],
-        englishName:'',
-        position:['', Validators.required],
-        idNumber:['', Validators.required],
-        birthday:['', Validators.required],
-        nationality:['', Validators.required]
-      });
+      // this.basicFormGroup = this._formBuilder.group({
+      //   localName: ['', Validators.required],
+      //   englishName:'',
+      //   position:['', Validators.required],
+      //   idNumber:['', Validators.required],
+      //   birthday:['', Validators.required],
+      //   nationality:['', Validators.required]
+      // });
       this.secondFormGroup = this._formBuilder.group({
         secondCtrl: ''
       });
@@ -180,7 +194,5 @@ export class UsersComponent implements OnInit {
     logWorkValue() {
       console.log(this.workList);
     }
-
-
 
 }

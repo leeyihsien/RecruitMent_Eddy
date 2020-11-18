@@ -26,6 +26,8 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 
 @NgModule({
@@ -63,7 +65,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDividerModule,
     MatExpansionModule
   ],
-  providers: [],
+  providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
